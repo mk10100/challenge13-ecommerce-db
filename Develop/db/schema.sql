@@ -1,0 +1,33 @@
+DROP DATABASE IF EXISTS ecommerce_db;
+
+CREATE DATABASE ecommerce_db;
+USE ecommerce_db;
+
+CREATE TABLE Category (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  category_name VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Product (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  product_name VARCHAR(255) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL CHECK (price >= 0),
+  stock INTEGER DEFAULT 10 NOT NULL CHECK (stock >= 0),
+  category_id INTEGER,
+  FOREIGN KEY (category_id) REFERENCES Category(id)
+);
+
+CREATE TABLE Tag (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  tag_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE ProductTag (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  product_id INTEGER NOT NULL,
+  tag_id INTEGER NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES Product(id),
+  FOREIGN KEY (tag_id) REFERENCES Tag(id)
+);
+
