@@ -23,6 +23,7 @@ npm install
 ## Usage
 
 npm run seed & nodemon server.js
+https://drive.google.com/file/d/1IX4Cu12LXXotRFFzsKrrbGNFCYr_GioP/view
 
 ## Contributing
 
